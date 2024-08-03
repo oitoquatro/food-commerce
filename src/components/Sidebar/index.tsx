@@ -10,12 +10,14 @@ export function Sidebar() {
         <img src={menuImg} alt='Abrir e fechar omenu' />
       </button>
       <nav>
-        <li>
-          <a href='#'>
-            <BurgerIcon />
-            <span>Hambúrguers</span>
-          </a>
-        </li>
+        <ul>
+          <li>
+            <a href='#' className='active'>
+              <BurgerIcon />
+              <span>Hambúrguers</span>
+            </a>
+          </li>
+        </ul>
       </nav>
     </Container>
   )
