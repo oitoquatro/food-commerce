@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Container } from './styles'
 
 import menuImg from '../../assets/menu.svg'
@@ -8,9 +10,15 @@ import { ReactComponent as SodaIcon } from '../../assets/soda.svg'
 import { ReactComponent as IceCreamIcon } from '../../assets/ice-cream.svg'
 
 export function Sidebar() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const manipularMenuAlternancia = () => {
+    setMenuOpen(!menuOpen)
+  }
+
   return (
-    <Container>
-      <button type='button'>
+    <Container isMenuOpen={menuOpen}>
+      <button type='button' onClick={manipularMenuAlternancia}>
         <img src={menuImg} alt='Abrir e fechar omenu' />
       </button>
       <nav>

@@ -1,14 +1,38 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Container = styled.aside`
+interface ContainerProps {
+  isMenuOpen: boolean
+}
+
+export const Container = styled.aside<ContainerProps>`
   background-color: ${({ theme }) => theme.colors.red};
 
-  /* width: 7.75rem;*/
+  /**condição para expansão do menu.
+  Sinal de dolar para trabalhar javascript dentro do css.
+  Uma aron function recebendo como parâmetro o isMenuOpen.
+  retornando uma condicional.*/
+  ${({ isMenuOpen }) => {
+    return isMenuOpen
+      ? css`
+          width: 16.3rem;
+        `
+      : css`
+          width: 7.75rem;
+        `
+  }}
+  /**fim da condição de expanção do menu. */
+
+
+
+  /**width: 7.75rem;*/
+  /**width: 16.3rem; */
   padding: 2rem 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  transition: width 0.5s;
 
   button {
     background: none;
