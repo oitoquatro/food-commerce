@@ -1,3 +1,11 @@
-export default function Burgers() {
-  return <h1>Sobremesas</h1>
+import { Cabecalho } from '../../../components/Cabecalho'
+import { SnackTitle } from '../../../components/SnackTitle'
+
+export default function Sobremesas() {
+  return (
+    <>
+      <Cabecalho title='Sobremesas' />
+      <SnackTitle>Sobremesas</SnackTitle>
+    </>
+  )
 }
