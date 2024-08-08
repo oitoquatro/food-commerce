@@ -1,5 +1,7 @@
 import { Cabecalho } from '../../../components/Cabecalho'
+import { Snacks } from '../../../components/Snacks'
 import { SnackTitle } from '../../../components/SnackTitle'
+
 
 export default function Burgers() {
   const data = [
@@ -23,12 +25,11 @@ export default function Burgers() {
     },
   ]
 
-  console.log('data', data)
-
   return (
     <>
       <Cabecalho title='Búrguers' />
       <SnackTitle>Hambúrguers</SnackTitle>
+      <Snacks snacks={data}></Snacks>
     </>
   )
 }
