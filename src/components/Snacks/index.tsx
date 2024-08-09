@@ -1,4 +1,6 @@
-import { Container } from "./Styles"
+import { FiPlus } from 'react-icons/fi'
+
+import { Container } from './Styles'
 
 interface SnacksProps {
   snacks: any[] //"any" para evitar o erro de id por hora
@@ -14,7 +16,9 @@ export function Snacks({ snacks }: SnacksProps) {
           <p>{snack.description}</p>
           <div>
             <strong>{snack.price}</strong>
-            <button type='button'></button>
+            <button type='button'>
+              <FiPlus />
+            </button>
           </div>
         </div>
       ))}
