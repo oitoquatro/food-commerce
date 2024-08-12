@@ -19,7 +19,7 @@ export default function Burgers() {
 
   return (
     <>
-      <Cabecalho title='Búrguers' />
+      <Cabecalho title='Burguers' />
       <SnackTitle>Hambúrguers</SnackTitle>
       <Snacks snacks={burgers}></Snacks>
     </>
