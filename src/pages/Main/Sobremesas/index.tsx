@@ -15,7 +15,7 @@ export default function Sobremesas() {
     },
     {
       id: 2,
-      snack: 'ice-cream',
+      snack: 'sobremesas',
       name: 'Chocolate com granulado',
       description:
         'Sorvete de chocolate com granulados em chocolate para você se deliciar.',
@@ -24,7 +24,7 @@ export default function Sobremesas() {
     },
     {
       id: 3,
-      snack: 'ice-cream',
+      snack: 'sobremesas',
       name: 'Flocos',
       description:
         'O tradicional flocos vem com cobertura em chocolate para adocicar seu dia.',

@@ -6,7 +6,7 @@ export default function Bebidas() {
   const data = [
     {
       id: 1,
-      snack: 'drink',
+      snack: 'bebidas',
       name: 'Coca-Cola 2l',
       description:
         'A tradicional Coca-Cola que todo mundo adora.',
@@ -15,7 +15,7 @@ export default function Bebidas() {
     },
     {
       id: 2,
-      snack: 'drink',
+      snack: 'bebidas',
       name: 'Guaraná Antarctica',
       description:
         'O irresistível e saboroso Guaraná em sua versão de latinha.',
@@ -24,7 +24,7 @@ export default function Bebidas() {
     },
     {
       id: 3,
-      snack: 'drink',
+      snack: 'bebidas',
       name: 'Suco de Abacaxí',
       description:
         'Suco natural de abacaxí com hortelã.',
