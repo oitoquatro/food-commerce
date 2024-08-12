@@ -1,6 +1,7 @@
 import { FiPlus } from 'react-icons/fi'
 
 import { Container } from './Styles'
+import { currencyFormat } from '../../helpers/currencyFormats'
 
 interface SnacksProps {
   snacks: any[] //"any" para evitar o erro de id por hora
@@ -15,7 +16,7 @@ export function Snacks({ snacks }: SnacksProps) {
           <img src={snack.image} alt={snack.name} />
           <p>{snack.description}</p>
           <div>
-            <strong>{snack.price}</strong>
+            <strong>{currencyFormat(snack.price)}</strong>
             <button type='button'>
               <FiPlus />
             </button>
