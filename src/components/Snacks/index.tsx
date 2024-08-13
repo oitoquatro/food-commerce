@@ -3,9 +3,10 @@ import { FiPlus } from 'react-icons/fi'
 import { Container } from './Styles'
 import { currencyFormat } from '../../helpers/currencyFormats'
 import { SkeletonSnack } from './SkeletonSnack'
+import { SnackData } from '../../interfaces/SnackData'
 
 interface SnacksProps {
-  snacks: any[] //"any" para evitar o erro de id por hora
+  snacks: SnackData[] //"SnackData" vem de "interfaces"(arquivo de tipagem)
 }
 
 export function Snacks({ snacks }: SnacksProps) {
