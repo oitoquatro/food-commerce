@@ -4,12 +4,16 @@ import { Container } from './Styles'
 import { currencyFormat } from '../../helpers/currencyFormats'
 import { SkeletonSnack } from './SkeletonSnack'
 import { SnackData } from '../../interfaces/SnackData'
+import { useCart } from '../../hooks/useCart'
 
 interface SnacksProps {
   snacks: SnackData[] //"SnackData" vem de "interfaces"(arquivo de tipagem)
 }
 
 export function Snacks({ snacks }: SnacksProps) {
+  //"useCart" está fazendo a chamada do "addSnackIntoCart"
+  const { addSnackIntoCart } = useCart()
+
   return (
     <Container>
       {!snacks.length
@@ -21,7 +25,8 @@ export function Snacks({ snacks }: SnacksProps) {
               <p>{snack.description}</p>
               <div>
                 <strong>{currencyFormat(snack.price)}</strong>
-                <button type='button'>
+                {/**"onClick" com a função de empilhar esperando add o snack */}
+                <button type='button' onClick={() => addSnackIntoCart(snack)}>
                   <FiPlus />
                 </button>
               </div>
