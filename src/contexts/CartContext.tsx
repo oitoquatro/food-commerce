@@ -35,13 +35,39 @@ export function CartProvider({ children }: CartProviderProps) {
 
   //função de adicionar
   function addSnackIntoCart(snack: SnackData): void {
-    //função que monta um novo snack
+    //A função abaixo e responsável por corresponder aos itens "item" contidos na const "cart", cada vez que é executada ela corresponde-rá a um item diferente.
+    //função de busca
+    const snackExistentInCart = cart.find(
+      (item) => item.snack === snack.snack && item.id === snack.id,
+    )
+    //função de atualização
+    if (snackExistentInCart) {
+      const newCart = cart.map((item) => {
+        if (item.id === snack.id) {
+          const quantity = item.quantity + 1
+          const subtotal = item.price * quantity
+
+          return { ...item, quantity, subtotal }
+        }
+
+        return item
+      })
+
+      console.log(`newCart atualização`, newCart)
+      setCart(newCart)
+
+      return
+    }
+
+    //função de adicionar
+    ///função que monta um novo snack
     const newSnack = { ...snack, quantity: 1, subtotal: snack.price }
-    //adiciona o snack ao cart existente --- push de um array
+
+    ///adiciona o snack ao cart existente --- push de um array
     const newCart = [...cart, newSnack]
 
     console.log(`newCart`, newCart)
-    
+
     setCart(newCart)
   }
 
