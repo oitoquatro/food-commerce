@@ -166,7 +166,7 @@
       "snack": "sobremesas",
       "name": "Chocolate com granulado",
       "description": "Sorvete de chocolate com granulados em chocolate para você se deliciar.",
-      "price": 6,
+      "price": 7,
       "image": "https://i.imgur.com/osAHOLe.jpg"
     },
     {
@@ -189,8 +189,8 @@
       "id": 5,
       "snack": "sobremesas",
       "name": "Morango",
-      "description": "O clássico sorvete de morango que deixe tudo mais leve.",
-      "price": 10,
+      "description": "O clássico sorvete de morango que deixa tudo mais leve.",
+      "price": 6.5,
       "image": "https://i.imgur.com/0TWnEI7.jpg"
     }
   ]

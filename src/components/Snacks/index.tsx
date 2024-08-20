@@ -20,6 +20,7 @@ export function Snacks({ snacks }: SnacksProps) {
         ? [1, 2, 3, 4].map((n) => <SkeletonSnack key={n} />)
         : snacks.map((snack) => (
             <div key={snack.id} className='snack'>
+              <span>1</span>
               <h2>{snack.name}</h2>
               <img src={snack.image} alt={snack.name} />
               <p>{snack.description}</p>
