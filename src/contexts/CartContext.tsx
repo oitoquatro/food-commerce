@@ -18,6 +18,7 @@ interface UpdateCartProps {
 }
 
 interface CartContextProps {
+  [x: string]: any
   cart: Snack[]
   addSnackIntoCart: (snack: SnackData) => void
   // removeSnackFromCart: ({ id, snack }: RemoveSnackFromCart) => void
