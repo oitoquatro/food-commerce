@@ -1,9 +1,12 @@
+import { Cabecalho } from '../../components/Cabecalho'
+import { OrderHeader } from '../../components/OrderFile'
 import { Container } from './styles'
 
 export default function Main() {
   return (
     <Container>
-      <h1>My Cart</h1>
+      <Cabecalho title='carrinho' />
+      <OrderHeader />
     </Container>
   )
 }
