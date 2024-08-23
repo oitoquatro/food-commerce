@@ -89,6 +89,22 @@ export const Container = styled.div`
       &:last-child {
         width: 1.5rem;
         padding-right: 0;
+
+        button {
+          background: none;
+          border: none;
+          width: 100%;
+
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+
+          svg {
+            fill: ${({ theme }) => theme.colors.yellow};
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+        }
       }
     }
   }

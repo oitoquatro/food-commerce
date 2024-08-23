@@ -25,9 +25,9 @@ interface CartContextProps {
   [x: string]: any
   cart: Snack[]
   addSnackIntoCart: (snack: SnackData) => void
-  removeSnackFromCart: (id: number, snack: Snack) => void
-  snackCartIncrement: (id: number, snack: Snack) => void
-  snackCartDecrement: (id: number, snack: Snack) => void
+  removeSnackFromCart: (snack: Snack) => void
+  snackCartIncrement: (snack: Snack) => void
+  snackCartDecrement: (snack: Snack) => void
   confirmOrder: () => void
   //updateCart: ({ id, snack, newQuantity }: UpdateCartProps) => void
 }
@@ -81,19 +81,27 @@ export function CartProvider({ children }: CartProviderProps) {
     setCart(newCart)
   }
 
-  function removeSnackFromCart(id: number, snack: Snack) {}
+  function removeSnackFromCart(snack: Snack) {
+    const newCart = cart.filter((item) => !(item.id === snack.id && item.snack === snack.snack))
 
-  function updateSnackQuantity(id: number, snack: Snack, newQuantity: number) {}
-
-  function snackCartIncrement(id: number, snack: Snack) {
-    updateSnackQuantity(id, snack, snack.quantity + 1)
+    setCart(newCart)
   }
 
-  function snackCartDecrement(id: number, snack: Snack) {
-    updateSnackQuantity(id, snack, snack.quantity - 1)
+  function updateSnackQuantity(snack: Snack, newQuantity: number) {
+    return
   }
 
-  function confirmOrder() {}
+  function snackCartIncrement(snack: Snack) {
+    updateSnackQuantity(snack, snack.quantity + 1)
+  }
+
+  function snackCartDecrement(snack: Snack) {
+    updateSnackQuantity(snack, snack.quantity - 1)
+  }
+
+  function confirmOrder() {
+    return
+  }
 
   //retorno do Provider, com o array "cart" e a função "addSnackIntoCart" que vai empilhando no array
   return (
