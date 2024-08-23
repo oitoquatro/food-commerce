@@ -1,6 +1,8 @@
 import { currencyFormat } from '../../../../helpers/currencyFormats'
 import { useCart } from '../../../../hooks/useCart'
 import { Container } from './styles'
+import plusImg from '../../../../assets/circle-plus.svg'
+import minusImg from '../../../../assets/circle-minus.svg'
 
 export function TableDesktop() {
   const { cart } = useCart()
@@ -27,7 +29,17 @@ export function TableDesktop() {
                 <h4>{item.name}</h4>
                 <span>{currencyFormat(item.price)}</span>
               </td>
-              <td>{`${item.quantity}`.padStart(2, '0')}</td>
+              <td>
+                <div>
+                  <button type='button' onClick={() => console.log(`decrementar snack`, item)}>
+                    <img src={minusImg} alt='Remover quantidade' />
+                  </button>
+                  <span>{`${item.quantity}`.padStart(2, '0')}</span>
+                  <button type='button' onClick={() => console.log(`incrementar snack`, item)}>
+                    <img src={plusImg} alt='Adicionar quantidade' />
+                  </button>
+                </div>
+              </td>
               <td>
                 <h5>{currencyFormat(item.subtotal)}</h5>
               </td>
