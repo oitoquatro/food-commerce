@@ -4,6 +4,7 @@ import { SnackData } from '../interfaces/SnackData'
 //npm i react-toastify -----> instalação no terminal
 import { toast } from 'react-toastify'
 import { snackEmoji } from '../helpers/snackEmoji'
+import { isTemplateExpression } from 'typescript'
 
 interface Snack extends SnackData {
   quantity: number
@@ -88,7 +89,26 @@ export function CartProvider({ children }: CartProviderProps) {
   }
 
   function updateSnackQuantity(snack: Snack, newQuantity: number) {
-    return
+    //condição que não deixa decrementar quando tem apenas 01 item
+    if (newQuantity <= 0) return
+
+    const snackExistentInCart = cart.find(
+      (item) => item.id === snack.id && item.snack === snack.snack,
+    )
+
+    if (!snackExistentInCart) return
+
+    const newCart = cart.map((item) => {
+      if (item.id === snackExistentInCart.id && item.snack === snackExistentInCart.snack) {
+        return {
+          ...item,
+          quantity: newQuantity,
+          subtotal: item.price * newQuantity,
+        }
+      }
+      return item
+    })
+    setCart(newCart)
   }
 
   function snackCartIncrement(snack: Snack) {
