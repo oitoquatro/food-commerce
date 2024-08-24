@@ -4,7 +4,6 @@ import { SnackData } from '../interfaces/SnackData'
 //npm i react-toastify -----> instalação no terminal
 import { toast } from 'react-toastify'
 import { snackEmoji } from '../helpers/snackEmoji'
-import { isTemplateExpression } from 'typescript'
 
 interface Snack extends SnackData {
   quantity: number
