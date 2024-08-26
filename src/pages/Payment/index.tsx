@@ -71,35 +71,79 @@ export default function Payment() {
             <div className='field'>
               <label htmlFor='state'>Estado</label>
               <select id='state' name='state'>
-                <option value="">Selecione</option>
-                <option value="AC">Acre</option>
-                <option value="AL">Alagoas</option>
-                <option value="AP">Amapá</option>
-                <option value="AM">Amazonas</option>
-                <option value="BA">Bahia</option>
-                <option value="CE">Ceará</option>
-                <option value="ES">Espírito Santo</option>
-                <option value="GO">Goiás</option>
-                <option value="MA">Maranhão</option>
-                <option value="MT">Mato Grosso</option>
-                <option value="MS">Mato Grosso do Sul</option>
-                <option value="MG">Minas Gerais</option>
-                <option value="PA">Pará</option>
-                <option value="PB">Paraíba</option>
-                <option value="PR">Paraná</option>
-                <option value="PE">Pernambuco</option>
-                <option value="PI">Piauí</option>
-                <option value="RJ">Rio de Janeiro</option>
-                <option value="RN">Rio Grande do Norte</option>
-                <option value="RS">Rio Grande do Sul</option>
-                <option value="RO">Rondônia</option>
-                <option value="RR">Roraima</option>
-                <option value="SC">Santa Catarina</option>
-                <option value="SP">São Paulo</option>
-                <option value="SE">Sergipe</option>
-                <option value="TO">Tocantins</option>
-                <option value="DF">Distrito Federal</option>
+                <option value=''>Selecione</option>
+                <option value='AC'>Acre</option>
+                <option value='AL'>Alagoas</option>
+                <option value='AP'>Amapá</option>
+                <option value='AM'>Amazonas</option>
+                <option value='BA'>Bahia</option>
+                <option value='CE'>Ceará</option>
+                <option value='ES'>Espírito Santo</option>
+                <option value='GO'>Goiás</option>
+                <option value='MA'>Maranhão</option>
+                <option value='MT'>Mato Grosso</option>
+                <option value='MS'>Mato Grosso do Sul</option>
+                <option value='MG'>Minas Gerais</option>
+                <option value='PA'>Pará</option>
+                <option value='PB'>Paraíba</option>
+                <option value='PR'>Paraná</option>
+                <option value='PE'>Pernambuco</option>
+                <option value='PI'>Piauí</option>
+                <option value='RJ'>Rio de Janeiro</option>
+                <option value='RN'>Rio Grande do Norte</option>
+                <option value='RS'>Rio Grande do Sul</option>
+                <option value='RO'>Rondônia</option>
+                <option value='RR'>Roraima</option>
+                <option value='SC'>Santa Catarina</option>
+                <option value='SP'>São Paulo</option>
+                <option value='SE'>Sergipe</option>
+                <option value='TO'>Tocantins</option>
+                <option value='DF'>Distrito Federal</option>
               </select>
+            </div>
+          </div>
+
+          <h4>Pagamento</h4>
+
+          <div className='field'>
+            <label htmlFor='credit-card-number'>Número do cartão</label>
+            <input
+              type='text'
+              id='credit-card-number'
+              name='credit-card-number'
+              autoComplete='cc-number'
+            />
+          </div>
+
+          <div className='field'>
+            <label htmlFor='credit-card-holder-name'>Nome impresso no cartão</label>
+            <input
+              type='text'
+              id='credit-card-holder-name'
+              name='credit-card-holder-name'
+              autoComplete='cc-name'
+            />
+          </div>
+
+          <div className='grouped'>
+            <div className='field'>
+              <label htmlFor='credit-card-expiration'>Validade (MM/AA)</label>
+              <input
+                type='text'
+                id='credit-card-expiration'
+                name='credit-card-expiration'
+                autoComplete='cc-exp'
+              />
+            </div>
+
+            <div className='field'>
+              <label htmlFor='credit-card-code'>Código de segurança (CVV)</label>
+              <input
+                type='text'
+                id='credit-card-code'
+                name='credit-card-code'
+                autoComplete='cc-csc'
+              />
             </div>
           </div>
         </Form>
