@@ -4,27 +4,17 @@ import { OrderHeader } from '../../components/OrderFile'
 import { Container, Form, Inner } from './styles'
 //npm i react-imask
 import { IMaskInput } from 'react-imask'
-
 //npm install react-hook-form
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 //npm i @hookform/resolvers yup
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
+import { FieldValues, schema } from './validationSchema'
 
-const schema = yup
-  .object({
-    fullName: yup.string().required('Nome e sobrenome é um campo obrigatório'),
-    email: yup.string().email().required('Email é um campo obrigatório'),
-    mobile: yup.string().required('Celular é um campo obrigatório'),
-  })
-  .required()
 
-type FieldValues = yup.InferType<typeof schema>
 
 export default function Payment() {
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
