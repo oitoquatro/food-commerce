@@ -7,6 +7,7 @@ import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { isValidCNPJ, isValidCPF, isValidPhone } from '@brazilian-utils/brazilian-utils'
+import { complement } from 'polished'
 
 export const schema = yup
   .object({
@@ -21,6 +22,25 @@ export const schema = yup
       .required('Celular é um campo obrigatório.')
       .transform((value) => value.replace(/[^\d]/g, '')) //pega o valor digitado e tira todos os caracteres deixando somente os números
       .test('validateMobile', 'Celular inválido.', (value) => isValidPhone(value)),
+    document: yup
+      .string()
+      .required('O CPF/CNPJ é obrigatório')
+      .transform((value) => value.replace(/[^\d]/g, ''))
+      .test(
+        'validateDocument',
+        'CPF/CNPJ inválido.',
+        (value) => isValidCPF(value) || isValidCNPJ(value),
+      ),
+    zipCode: yup
+      .string()
+      .required('O CEP é obrigatório.')
+      .transform((val) => val.replace(/[\d]+/g, '')),
+    street: yup.string().required('O endereço é obrigatório.'),
+    number: yup.string().required('O número é obrigatório.'),
+    complement: yup.string(),
+    neighborhood: yup.string().required('O bairro é obrigatório.'),
+    city: yup.string().required('A cidade é obrigatória.'),
+    state: yup.string().required('O estado é obrigatório.'),
   })
   .required()
 
