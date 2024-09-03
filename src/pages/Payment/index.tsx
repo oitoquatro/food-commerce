@@ -1,13 +1,14 @@
+import { yupResolver } from '@hookform/resolvers/yup'
+import { SubmitHandler, useForm, Controller } from 'react-hook-form'
+
+import { IMaskInput } from 'react-imask'
+
 import { Cabecalho } from '../../components/Cabecalho'
 import { PayOrder } from '../../components/OrderCloseAction/PayOrder'
 import { OrderHeader } from '../../components/OrderFile'
+
 import { Container, Form, Inner } from './styles'
-//npm i react-imask
-import { IMaskInput } from 'react-imask'
-//npm install react-hook-form
-import { useForm, SubmitHandler, Controller } from 'react-hook-form'
-//npm i @hookform/resolvers yup
-import { yupResolver } from '@hookform/resolvers/yup'
+
 import { FieldValues, schema } from './validationSchema'
 
 export default function Payment() {
@@ -18,7 +19,7 @@ export default function Payment() {
   } = useForm<FieldValues>({
     resolver: yupResolver(schema),
   })
-  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log('data', data)
 
   return (
     <Container>
@@ -42,7 +43,7 @@ export default function Payment() {
 
           <div className='grouped'>
             <div className='field'>
-              <label htmlFor='email'>Email</label>
+              <label htmlFor='email'>E-mail</label>
               <Controller
                 name='email'
                 control={control}
@@ -62,7 +63,7 @@ export default function Payment() {
                     type='tel'
                     id='mobile'
                     autoComplete='phone'
-                    mask={'(00) 90000 0000'}
+                    mask={'(00) 90000-0000'}
                     {...field}
                   />
                 )}
@@ -70,7 +71,7 @@ export default function Payment() {
               {errors.mobile && <p className='error'>{errors.mobile.message}</p>}
             </div>
             <div className='field'>
-              <label htmlFor='document'>CPF / CNPJ</label>
+              <label htmlFor='document'>CPF/CNPJ</label>
               <Controller
                 name='document'
                 control={control}
@@ -79,7 +80,7 @@ export default function Payment() {
                     type='text'
                     id='document'
                     mask={[
-                      { mask: '000.000.000.00', maxLength: 11 },
+                      { mask: '000.000.000-00', maxLength: 11 },
                       { mask: '00.000.000/0000-00' },
                     ]}
                     {...field}
@@ -93,7 +94,7 @@ export default function Payment() {
           <h4>Endereço de entrega</h4>
 
           <div className='field'>
-            <label htmlFor='zipCod'>CEP</label>
+            <label htmlFor='zipCode'>CEP</label>
             <Controller
               name='zipCode'
               control={control}
@@ -129,7 +130,6 @@ export default function Payment() {
               />
               {errors.number && <p className='error'>{errors.number.message}</p>}
             </div>
-
             <div className='field'>
               <label htmlFor='complement'>Complemento</label>
               <Controller
