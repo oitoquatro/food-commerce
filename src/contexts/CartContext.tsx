@@ -57,6 +57,10 @@ export function CartProvider({ children }: CartProviderProps) {
     localStorage.setItem(localStorageKey, JSON.stringify(items))
   }
 
+  function clearCart() {
+    localStorage.removeItem(localStorageKey)
+  }
+
   //função de adicionar
   function addSnackIntoCart(snack: SnackData): void {
     //A função abaixo e responsável por corresponder aos itens "item" contidos na const "cart", cada vez que é executada ela corresponde-rá a um item diferente.
@@ -141,6 +145,8 @@ export function CartProvider({ children }: CartProviderProps) {
   function payOrder(customer: CustomerData) {
     console.log('payOrder', cart, customer)
     //chamada de api parra o backend
+
+    clearCart()//deve ser executado após retorno positivo da API.
 
     return
   }
