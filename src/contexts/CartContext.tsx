@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 //npm i react-toastify -----> instalação no terminal
 import { toast } from 'react-toastify'
 import { snackEmoji } from '../helpers/snackEmoji'
+import { CustomerData } from '../interfaces/CustomerData'
 
 interface Snack extends SnackData {
   quantity: number
@@ -30,7 +31,7 @@ interface CartContextProps {
   snackCartIncrement: (snack: Snack) => void
   snackCartDecrement: (snack: Snack) => void
   confirmOrder: () => void
-  payOrder: () => void
+  payOrder: (customer: CustomerData) => void
 }
 
 interface CartProviderProps {
@@ -124,7 +125,10 @@ export function CartProvider({ children }: CartProviderProps) {
     navigate('/payment')
   }
 
-  function payOrder() {
+  function payOrder(customer: CustomerData) {
+    console.log('payOrder', cart, customer)
+    //chamada de api parra o backend
+
     return
   }
 

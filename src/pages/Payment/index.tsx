@@ -10,8 +10,11 @@ import { OrderHeader } from '../../components/OrderFile'
 import { Container, Form, Inner } from './styles'
 
 import { FieldValues, schema } from './validationSchema'
+import { useCart } from '../../hooks/useCart'
+import { CustomerData } from '../../interfaces/CustomerData'
 
 export default function Payment() {
+  const { payOrder } = useCart()
   const {
     control,
     handleSubmit,
@@ -19,7 +22,7 @@ export default function Payment() {
   } = useForm<FieldValues>({
     resolver: yupResolver(schema),
   })
-  const onSubmit: SubmitHandler<FieldValues> = (data) => console.log('data', data)
+  const onSubmit: SubmitHandler<FieldValues> = (data) => payOrder(data as CustomerData)
 
   return (
     <Container>
