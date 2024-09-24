@@ -146,7 +146,7 @@ export function CartProvider({ children }: CartProviderProps) {
     console.log('payOrder', cart, customer)
     //chamada de api parra o backend
 
-    clearCart()//deve ser executado após retorno positivo da API.
+    clearCart() //deve ser executado após retorno positivo da API.
 
     return
   }
