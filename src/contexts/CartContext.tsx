@@ -6,25 +6,10 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { snackEmoji } from '../helpers/snackEmoji'
 import { CustomerData } from '../interfaces/CustomerData'
-
-interface Snack extends SnackData {
-  quantity: number
-  subtotal: number
-}
-
-interface RemoveSnackFromCart {
-  id: number
-  snack: string
-}
-
-interface UpdateCartProps {
-  id: number
-  snack: string
-  newQuantity: number
-}
+import { Snack } from '../interfaces/Snack'
+import { processCheckout } from '../services/api'
 
 interface CartContextProps {
-  [x: string]: any
   cart: Snack[]
   addSnackIntoCart: (snack: SnackData) => void
   removeSnackFromCart: (snack: Snack) => void
@@ -142,11 +127,22 @@ export function CartProvider({ children }: CartProviderProps) {
     navigate('/payment')
   }
 
-  function payOrder(customer: CustomerData) {
-    console.log('payOrder', cart, customer)
-    //chamada de api parra o backend
+  async function payOrder(customer: CustomerData) {
 
-    clearCart() //deve ser executado após retorno positivo da API.
+    try {
+      const response = await processCheckout(cart, customer)
+      if (response.data.status !== 'PAID') {
+toast.error('Erro ao processar o pagamento, por favor, tente novamente mais tarde.')
+return
+      }
+      toast.success('Pagamento realizado com sucesso.')
+      clearCart() //deve ser executado após retorno positivo da API.
+    } catch (error) {
+      console.log(error)
+      toast.error('Erro ao processar o pedido.')
+    }
+
+
 
     return
   }
